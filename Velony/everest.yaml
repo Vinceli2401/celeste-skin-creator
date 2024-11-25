@@ -1,7 +1,0 @@
-﻿- Name: Velony
-  Version: 1.0.0
-  Dependencies:
-    - Name: Everest
-      Version: 1.0.0
-    - Name: SkinModHelper
-      Version: 0.5.0

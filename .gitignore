@@ -1,1 +1,4 @@
 /Skin/*
+/GeneratedImages
+/MotionPredictor.py
+/ImageRegenerator.py

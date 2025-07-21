@@ -29,6 +29,7 @@ sleeves = ImageColor.getrgb(config.get("sleeves", "#FFFFFF"))
 collar = ImageColor.getrgb(config.get("collar", "#FFFFFF"))
 trousers = ImageColor.getrgb(config.get("trousers", "#FFFFFF"))
 
+# Debug
 print(f"Skin Name: {skinName}")
 print(f"Author Name: {authorName}")
 print(f"Dash Colors: {dash0}, {dash1}, {dash2}")
@@ -37,9 +38,11 @@ print(f"Sleeves Color: {sleeves}")
 print(f"Collar Color: {collar}")
 print(f"Trousers Color: {trousers}")
 
+# From skinbase to skin
 from_directory = resource_path("SkinBase")
 to_directory = os.path.join("Skin", skinName)
 
+# If you run it default too many times this will happen. Change config.json.
 try:
     shutil.copytree(from_directory, to_directory)
 except FileExistsError as e:
@@ -136,6 +139,7 @@ def update_image_colors(image_path, color_mappings):
                     img.putpixel((i, j), new_color)
     img.save(image_path)
 
+# Default color mappings.
 color_mappings = {
     (91, 110, 225): shirt,
     (63, 63, 116): sleeves,

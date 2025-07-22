@@ -5,13 +5,11 @@ import shutil
 from PIL import Image, ImageColor
 import sys
 
-# Helper function to handle PyInstaller's dynamic paths
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):
         return os.path.join(sys._MEIPASS, relative_path)
     return os.path.join(os.path.abspath("."), relative_path)
 
-# Load config.json
 config_file_path = resource_path('config.json')
 if not os.path.exists(config_file_path):
     raise FileNotFoundError(f"Please create config.json in the directory and populate it.")
@@ -21,15 +19,14 @@ with open(config_file_path, 'r') as config_file:
 
 skinName = config.get("skinName", "default_skin")
 authorName = config.get("authorName", "default_author")
-dash0 = config.get("dash0", "#FFFFFF")
-dash1 = config.get("dash1", "#FFFFFF")
-dash2 = config.get("dash2", "#FFFFFF")
-shirt = ImageColor.getrgb(config.get("shirt", "#FFFFFF"))
-sleeves = ImageColor.getrgb(config.get("sleeves", "#FFFFFF"))
-collar = ImageColor.getrgb(config.get("collar", "#FFFFFF"))
-trousers = ImageColor.getrgb(config.get("trousers", "#FFFFFF"))
+dash0 = config.get("dash0", "
+dash1 = config.get("dash1", "
+dash2 = config.get("dash2", "
+shirt = ImageColor.getrgb(config.get("shirt", "
+sleeves = ImageColor.getrgb(config.get("sleeves", "
+collar = ImageColor.getrgb(config.get("collar", "
+trousers = ImageColor.getrgb(config.get("trousers", "
 
-# Debug
 print(f"Skin Name: {skinName}")
 print(f"Author Name: {authorName}")
 print(f"Dash Colors: {dash0}, {dash1}, {dash2}")
@@ -38,11 +35,9 @@ print(f"Sleeves Color: {sleeves}")
 print(f"Collar Color: {collar}")
 print(f"Trousers Color: {trousers}")
 
-# From skinbase to skin
 from_directory = resource_path("SkinBase")
 to_directory = os.path.join("Skin", skinName)
 
-# If you run it default too many times this will happen. Change config.json.
 try:
     shutil.copytree(from_directory, to_directory)
 except FileExistsError as e:
@@ -139,7 +134,6 @@ def update_image_colors(image_path, color_mappings):
                     img.putpixel((i, j), new_color)
     img.save(image_path)
 
-# Default color mappings.
 color_mappings = {
     (91, 110, 225): shirt,
     (63, 63, 116): sleeves,
